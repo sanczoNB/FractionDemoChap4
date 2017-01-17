@@ -18,6 +18,11 @@ namespace FractionDemo
             _numerator = numerator;
         }
 
+        public static string Info()
+        {
+            return "Structer, Fraction by Piotr Piosik";
+        }
+
         public static readonly Fraction Zero = new Fraction(0);
         public static readonly Fraction One = new Fraction(1);
         public static readonly Fraction Half = new Fraction(1,2);
