@@ -20,6 +20,8 @@ namespace FractionDemo
             fraction.SimplifyNaiveVersion();
             Console.WriteLine(fraction);
 
+            var fractionException = new Fraction(1,0);
+
             Console.WriteLine(Fraction.Info());
             
             Console.ReadKey();

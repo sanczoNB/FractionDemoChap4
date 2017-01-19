@@ -4,17 +4,12 @@ namespace FractionDemo
 {
     public struct Fraction
     {
-        private int _numerator;
 
         private int _denominator;
 
         #region Property
 
-        public int Numerator
-        {
-            set { _numerator = value; }
-            get { return _numerator; }
-        }
+        public int Numerator { get; set; }
 
         public int Denominator
         {
@@ -31,49 +26,46 @@ namespace FractionDemo
 
         #endregion
 
-        public Fraction(int numerator, int denominator = 1)
+        public Fraction(int numerator, int denominator = 1) : this()
         {
-            if (denominator == 0)
-            {
-                throw new ArgumentException("Denominator must not be equal zero");
-            }
-            _numerator = numerator;
-            _denominator = denominator;
+         
+            Numerator = numerator;
+            Denominator = denominator;
         }
 
         public override string ToString()
         {
-            return $"{_numerator}/{_denominator}";
+            return $"{Numerator}/{_denominator}";
         }
 
         public double ToDouble()
         {
-            return _numerator/(double) _denominator;
+            return Numerator/(double) _denominator;
         }
 
         public void SimplifyNaiveVersion()
         {
             var greatestCommonDivisor = GreatestCommonDivisorWithEuclideanAlgorithm();
-            _numerator = _numerator/greatestCommonDivisor;
+            Numerator = Numerator/greatestCommonDivisor;
             _denominator = _denominator/greatestCommonDivisor;
             
             //sign
-            if (_numerator * _denominator < 0)
+            if (Numerator * _denominator < 0)
             {
-                _numerator = - Math.Abs(_numerator);
+                Numerator = - Math.Abs(Numerator);
                 _denominator = Math.Abs(_denominator);
             }
             else
             {
-                _numerator = Math.Abs(_numerator);
+                Numerator = Math.Abs(Numerator);
                 _denominator = Math.Abs(_denominator);
             }
         }
 
         public int GreatestCommonDivisorWithEuclideanAlgorithm()
         {
-            int a = Math.Max(_denominator, _numerator);
-            int b = Math.Min(_denominator, _numerator);
+            int a = Math.Max(_denominator, Numerator);
+            int b = Math.Min(_denominator, Numerator);
             do
             {
                 var c = a%b;
@@ -86,8 +78,8 @@ namespace FractionDemo
 
         private int GreatestCommonDivisorNaiveVersion()
         {
-            var greatestCommonDivisor = Math.Min(Math.Abs(_numerator), Math.Abs(_denominator));
-            while ((_numerator % greatestCommonDivisor != 0) || (_denominator % greatestCommonDivisor != 0))
+            var greatestCommonDivisor = Math.Min(Math.Abs(Numerator), Math.Abs(_denominator));
+            while ((Numerator % greatestCommonDivisor != 0) || (_denominator % greatestCommonDivisor != 0))
             {
                 greatestCommonDivisor--;
             }
