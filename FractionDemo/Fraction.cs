@@ -8,6 +8,22 @@ namespace FractionDemo
 
         private int _denominator;
 
+        #region Property
+
+        public int Numerator
+        {
+            set { _numerator = value; }
+            get { return _numerator; }
+        }
+
+        public int Denominator
+        {
+            set { _denominator = value; }
+            get { return _denominator; }
+        }
+
+        #endregion
+
         public Fraction(int numerator, int denominator = 1)
         {
             if (denominator == 0)
