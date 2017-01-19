@@ -18,7 +18,14 @@ namespace FractionDemo
 
         public int Denominator
         {
-            set { _denominator = value; }
+            set
+            {
+                if (value == 0)
+                {
+                    throw new ArgumentException("Denominator must not be equal zero");
+                }
+                _denominator = value;
+            }
             get { return _denominator; }
         }
 
