@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +12,14 @@ namespace FractionDemo
     {
         static void Main(string[] args)
         {
-            Fraction fractionTwo = new Fraction(2, 1);
-            Fraction fractionZero = Fraction.Zero;
-            Fraction fractionHalf = Fraction.Half;
-            Console.WriteLine(fractionHalf.ToString());
+            Fraction a = Fraction.Half;
+            Fraction b = Fraction.Quater;
 
-            Fraction fraction = new Fraction(4,-2);
-            fraction.SimplifyNaiveVersion();
-            Console.WriteLine(fraction);
-
-            var fractionException = new Fraction(1,0);
-
-            Console.WriteLine(Fraction.Info());
-            
+            Console.WriteLine(a+b);
+            Console.WriteLine(a-b);
+            Console.WriteLine(a*b);
+            Console.WriteLine(a/b);
+                       
             Console.ReadKey();
         }
 
