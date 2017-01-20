@@ -2,7 +2,7 @@
 
 namespace FractionDemo
 {
-    public struct Fraction
+    public struct Fraction : IComparable<Fraction>
     {
 
         private int _denominator;
@@ -52,6 +52,21 @@ namespace FractionDemo
         public override int GetHashCode()
         {
             return Numerator ^ Denominator;
+        }
+
+        public int CompareTo(Fraction f)
+        {
+            if (this > f)
+            {
+                return 1;
+            }
+
+            if (this < f)
+            {
+                return -1;
+            }
+
+            return 0;
         }
 
         public double ToDouble()
