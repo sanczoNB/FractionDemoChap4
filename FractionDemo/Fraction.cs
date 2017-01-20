@@ -38,6 +38,22 @@ namespace FractionDemo
             return $"{Numerator}/{_denominator}";
         }
 
+        public override bool Equals(object obj)
+        {
+            var isFraction = obj is Fraction;
+            if (isFraction)
+            {
+                var f = (Fraction) obj;
+                return f == this;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Numerator ^ Denominator;
+        }
+
         public double ToDouble()
         {
             return Numerator/(double) _denominator;
@@ -133,7 +149,35 @@ namespace FractionDemo
             return !(f1 == f2);
         }
 
-        
+        public static bool operator >(Fraction f1, Fraction f2)
+        {
+            return f1.ToDouble() > f2.ToDouble();
+        }
+
+        public static bool operator <(Fraction f1, Fraction f2)
+        {
+            return f1.ToDouble() < f2.ToDouble();
+        }
+
+        public static bool operator >=(Fraction f1, Fraction f2)
+        {
+            return f1.ToDouble() >= f2.ToDouble();
+        }
+
+        public static bool operator <=(Fraction f1, Fraction f2)
+        {
+            return f1.ToDouble() <= f2.ToDouble();
+        }
+
+        public static explicit operator double(Fraction f)
+        {
+            return f.ToDouble();
+        }
+
+        public static implicit operator Fraction(int number)
+        {
+            return new Fraction(number);
+        }
 
         #endregion
 
