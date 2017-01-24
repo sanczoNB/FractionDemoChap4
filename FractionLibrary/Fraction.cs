@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FractionDemo
+namespace FractionLibrary
 {
     public struct Fraction : IComparable<Fraction>
     {
