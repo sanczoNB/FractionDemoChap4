@@ -81,7 +81,7 @@ namespace FractionLibrary
             _denominator = _denominator/greatestCommonDivisor;
             
             //sign
-            if (Numerator * _denominator < 0)
+            if (Math.Sign(Numerator) * Math.Sign(_denominator) < 0)
             {
                 Numerator = - Math.Abs(Numerator);
                 _denominator = Math.Abs(_denominator);
@@ -196,7 +196,16 @@ namespace FractionLibrary
 
         #endregion
 
+        public static Fraction AddWithoutOverload(Fraction f1, Fraction f2)
+        {
+            var numerator = checked( f1.Numerator * f2.Denominator + f2.Numerator * f1.Numerator);
+            var denominator = checked(f1.Denominator * f2.Denominator);
 
+            var result = new Fraction(numerator, denominator);
+            result.Simplify();
+
+            return result;
+        }
 
         public static int LeastCommonMultiple(int n1, int n2)
         {
