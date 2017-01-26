@@ -273,6 +273,9 @@ namespace FractionUnitTests
             //ograniczenie maksymalniej wartości
             int limit = (int) (Math.Sqrt(int.MaxValue/2) - 1);
 
+            //dopuszczalna różnica w wyniku
+            const double precision = 1E-10;
+
             for (int i = 0; i < RepeatsNumber; i++)
             {
                 Fraction a = new Fraction(DrawInteger(limit), DrawIntegerDiffrentThanZero(limit));
@@ -285,10 +288,10 @@ namespace FractionUnitTests
                 double divided = (a/b).ToDouble();
 
                 //assert
-                suma.Should().Be(a.ToDouble() + b.ToDouble());
-                subtraction.Should().Be(a.ToDouble() - b.ToDouble());
-                multiplication.Should().Be(a.ToDouble()*b.ToDouble());
-                divided.Should().Be(a.ToDouble()/b.ToDouble());
+                Assert.AreEqual(a.ToDouble() + b.ToDouble(), suma, precision, "Niepowodzenie przy dodawaniu");
+                Assert.AreEqual(a.ToDouble() - b.ToDouble(), subtraction, precision, "Niepowodzenie przy odejmowaniu");
+                Assert.AreEqual(a.ToDouble() * b.ToDouble(), multiplication, precision, "Niepowodzenie przy mnożeniu");
+                Assert.AreEqual(a.ToDouble() / b.ToDouble(), divided, precision, "Niepowdzenie przy mnożeniu");
             }
         }
 
